@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import array
 
 # From https://github.com/ahawker/ulid/blob/06289583e9de4286b4d80b4ad000d137816502ca/ulid/base32.py#L102
