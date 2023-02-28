@@ -29,6 +29,20 @@
 
 Create and transform ULIDs
 
+## Example
+
+```python
+>>> import ulid_transform
+>>> ulid_transform.ulid_hex()
+'01869a2ea5fb0b43aa056293e47c0a35'
+>>> ulid_transform.ulid_now()
+'0001HZX0NW00GW0X476W5TVBFE'
+>>> ulid_transform.ulid_at_time(1234)
+'000000016JC62D620DGYNG2R8H'
+>>> ulid_transform.ulid_to_bytes('0001HZX0NW00GW0X476W5TVBFE')
+b'\x00\x00c\xfe\x82\xbc\x00!\xc0t\x877\x0b\xad\xad\xee'
+```
+
 ## Installation
 
 Install this via pip (or your favourite package manager):
