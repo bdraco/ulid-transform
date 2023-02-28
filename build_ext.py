@@ -11,9 +11,9 @@ except ImportError:
     from distutils.core import Extension
 
 ulid_module = Extension(
-    "ulid_transform._ulid",
+    "ulid_transform._ulid_impl",
     [
-        join("src", "ulid_transform", "_ulid.pyx"),
+        join("src", "ulid_transform", "_ulid_impl.pyx"),
         join("src", "ulid_transform", "ulid_wrapper.cpp"),
     ],
     language="c++",
