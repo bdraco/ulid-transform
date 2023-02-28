@@ -1,10 +1,10 @@
 import pytest
 
-from ulid_transform import ulid, ulid_hex, ulid_to_bytes
+from ulid_transform import ulid_hex, ulid_now, ulid_to_bytes
 
 
-def test_ulid():
-    ulid_str = ulid()
+def test_ulid_now():
+    ulid_str = ulid_now()
     assert len(ulid_str) == 26
 
 
@@ -23,3 +23,10 @@ def test_ulid_to_bytes():
 def test_ulid_to_bytes_invalid_length():
     with pytest.raises(ValueError):
         assert ulid_to_bytes("aa")
+
+
+def test_ulid_to_bytes_2():
+    assert (
+        ulid_to_bytes("00000000AC00GW0X476W5TVBFE")
+        == b"\x00\x00\x00\x00\x01L\x00!\xc0t\x877\x0b\xad\xad\xee"
+    )
