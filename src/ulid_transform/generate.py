@@ -32,7 +32,7 @@ def ulid(timestamp: float | None = None) -> str:
 
     This string can be loaded directly with https://github.com/ahawker/ulid
 
-    import homeassistant.util.ulid as ulid_util
+    import ulid_transform as ulid_util
     import ulid
     ulid.parse(ulid_util.ulid())
     """
