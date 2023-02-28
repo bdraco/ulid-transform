@@ -53,6 +53,8 @@ repos:
     rev: v2.2.2
     hooks:
       - id: codespell
+        args:
+          - --ignore-words-list=ans
   - repo: https://github.com/PyCQA/flake8
     rev: 6.0.0
     hooks:

@@ -1,4 +1,6 @@
 import array
+from random import getrandbits
+from time import time
 
 # From https://github.com/ahawker/ulid/blob/06289583e9de4286b4d80b4ad000d137816502ca/ulid/base32.py#L102
 #: Array that maps encoded string char byte values to enable O(1) lookups.
@@ -264,25 +266,87 @@ DECODE = array.array(
     ),
 )
 
-HAS_CYTHON = 0
-_str = str
 
-try:
-    import cython
+def ulid_hex() -> str:
+    """Generate a ULID in lowercase hex that will work for a UUID.
 
-    HAS_CYTHON = 1
-except ImportError:
-    from ._cython_compat import FAKE_CYTHON as cython
+    This ulid should not be used for cryptographically secure
+    operations.
+
+    This string can be converted with https://github.com/ahawker/ulid
+
+    ulid.from_uuid(uuid.UUID(ulid_hex))
+    """
+    return f"{int(time()*1000):012x}{getrandbits(80):020x}"
 
 
-def ulid_to_bytes(value: _str) -> bytes:
+def ulid_now() -> str:
+    """Generate a ULID."""
+    return ulid_at_time(time())
+
+
+def ulid_at_time(timestamp: float) -> str:
+    """Generate a ULID.
+
+    This ulid should not be used for cryptographically secure
+    operations.
+
+     01AN4Z07BY      79KA1307SR9X4MV3
+    |----------|    |----------------|
+     Timestamp          Randomness
+       48bits             80bits
+
+    This string can be loaded directly with https://github.com/ahawker/ulid
+
+    import ulid_transform as ulid_util
+    import ulid
+    ulid.parse(ulid_util.ulid())
+    """
+    ulid_bytes = int((timestamp) * 1000).to_bytes(6, byteorder="big") + int(
+        getrandbits(80)
+    ).to_bytes(10, byteorder="big")
+
+    # This is base32 crockford encoding with the loop unrolled for performance
+    #
+    # This code is adapted from:
+    # https://github.com/ahawker/ulid/blob/06289583e9de4286b4d80b4ad000d137816502ca/ulid/base32.py#L102
+    #
+    enc = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
+    return (
+        enc[(ulid_bytes[0] & 224) >> 5]
+        + enc[ulid_bytes[0] & 31]
+        + enc[(ulid_bytes[1] & 248) >> 3]
+        + enc[((ulid_bytes[1] & 7) << 2) | ((ulid_bytes[2] & 192) >> 6)]
+        + enc[((ulid_bytes[2] & 62) >> 1)]
+        + enc[((ulid_bytes[2] & 1) << 4) | ((ulid_bytes[3] & 240) >> 4)]
+        + enc[((ulid_bytes[3] & 15) << 1) | ((ulid_bytes[4] & 128) >> 7)]
+        + enc[(ulid_bytes[4] & 124) >> 2]
+        + enc[((ulid_bytes[4] & 3) << 3) | ((ulid_bytes[5] & 224) >> 5)]
+        + enc[ulid_bytes[5] & 31]
+        + enc[(ulid_bytes[6] & 248) >> 3]
+        + enc[((ulid_bytes[6] & 7) << 2) | ((ulid_bytes[7] & 192) >> 6)]
+        + enc[(ulid_bytes[7] & 62) >> 1]
+        + enc[((ulid_bytes[7] & 1) << 4) | ((ulid_bytes[8] & 240) >> 4)]
+        + enc[((ulid_bytes[8] & 15) << 1) | ((ulid_bytes[9] & 128) >> 7)]
+        + enc[(ulid_bytes[9] & 124) >> 2]
+        + enc[((ulid_bytes[9] & 3) << 3) | ((ulid_bytes[10] & 224) >> 5)]
+        + enc[ulid_bytes[10] & 31]
+        + enc[(ulid_bytes[11] & 248) >> 3]
+        + enc[((ulid_bytes[11] & 7) << 2) | ((ulid_bytes[12] & 192) >> 6)]
+        + enc[(ulid_bytes[12] & 62) >> 1]
+        + enc[((ulid_bytes[12] & 1) << 4) | ((ulid_bytes[13] & 240) >> 4)]
+        + enc[((ulid_bytes[13] & 15) << 1) | ((ulid_bytes[14] & 128) >> 7)]
+        + enc[(ulid_bytes[14] & 124) >> 2]
+        + enc[((ulid_bytes[14] & 3) << 3) | ((ulid_bytes[15] & 224) >> 5)]
+        + enc[ulid_bytes[15] & 31]
+    )
+
+
+def ulid_to_bytes(value: str) -> bytes:
     """Decode a ulid to bytes."""
     if len(value) != 26:
         raise ValueError("ULID must be 26 characters")
     encoded = value.encode("ascii")
-    if cython.compiled:
-        return _decode_ulid(encoded)  # type: ignore[name-defined] # noqa: F821
-
     decoding = DECODE
     return bytes(
         (
@@ -334,3 +398,17 @@ def ulid_to_bytes(value: _str) -> bytes:
             ((decoding[encoded[24]] << 5) | (decoding[encoded[25]])) & 0xFF,
         )
     )
+
+
+try:
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+        _ulid_at_time as ulid_at_time,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+        _ulid_now as ulid_now,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+        _ulid_to_bytes as ulid_to_bytes,
+    )
+except ImportError:
+    pass

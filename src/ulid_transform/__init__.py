@@ -1,8 +1,5 @@
 __version__ = "0.2.0"
 
-# Fast ulid is used for generation
-from fast_ulid import ulid
+from .ulid_impl import ulid_at_time, ulid_hex, ulid_now, ulid_to_bytes
 
-from .convert import ulid_to_bytes
-
-__all__ = ["ulid", "ulid_to_bytes"]
+__all__ = ["ulid_now", "ulid_at_time", "ulid_hex", "ulid_to_bytes"]

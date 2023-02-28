@@ -37,6 +37,8 @@ Install this via pip (or your favourite package manager):
 
 ## Contributors ✨
 
+Thanks to https://github.com/suyash/ulid which provides the cython implementation guts.
+
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- prettier-ignore-start -->
