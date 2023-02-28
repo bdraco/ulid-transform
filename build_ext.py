@@ -12,7 +12,10 @@ except ImportError:
 
 ulid_module = Extension(
     "ulid_transform._ulid",
-    [join("src", "ulid_transform", "_ulid.pyx")],
+    [
+        join("src", "ulid_transform", "_ulid.pyx"),
+        join("src", "ulid_transform", "ulid_wrapper.cpp"),
+    ],
     language="c++",
 )
 
