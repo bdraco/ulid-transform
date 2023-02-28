@@ -1,3 +1,5 @@
+// Originally from https://github.com/suyash/ulid
+
 #ifndef ULID_UINT128_HH
 #define ULID_UINT128_HH
 
