@@ -33,7 +33,7 @@ cdef array.array decoding = array.array(
      0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF)
 )
 
-cpdef decode_ulid(str encoded)
+cpdef ulid_to_bytes(str encoded)
 
 cdef inline _decode_ulid(const char *encoded):
     return bytes((
