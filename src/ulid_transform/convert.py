@@ -264,25 +264,12 @@ DECODE = array.array(
     ),
 )
 
-HAS_CYTHON = 0
-_str = str
 
-try:
-    import cython
-
-    HAS_CYTHON = 1
-except ImportError:
-    from ._cython_compat import FAKE_CYTHON as cython
-
-
-def ulid_to_bytes(value: _str) -> bytes:
+def ulid_to_bytes(value: str) -> bytes:
     """Decode a ulid to bytes."""
     if len(value) != 26:
         raise ValueError("ULID must be 26 characters")
     encoded = value.encode("ascii")
-    if cython.compiled:
-        return _decode_ulid(encoded)  # type: ignore[name-defined] # noqa: F821
-
     decoding = DECODE
     return bytes(
         (
@@ -334,3 +321,9 @@ def ulid_to_bytes(value: _str) -> bytes:
             ((decoding[encoded[24]] << 5) | (decoding[encoded[25]])) & 0xFF,
         )
     )
+
+
+try:
+    from ._convert import ulid_to_bytes  # type: ignore[no-redef] # noqa: F811 F401
+except ImportError:
+    pass
