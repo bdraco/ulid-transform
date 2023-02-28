@@ -19,7 +19,9 @@ std::string _cpp_ulid_at_time(double timestamp) {
     return ulid::Marshal(ulid);
 }
 
-std::vector<uint8_t> _cpp_ulid_to_bytes(const char * ulid_string) {
-    ulid::ULID ulid = ulid::Unmarshal(ulid_string);
-    return ulid::MarshalBinary(ulid);
+std::string _cpp_ulid_to_bytes(std::string ulid_string) {
+    ulid::ULID ulid = ulid::Unmarshal(ulid_string.c_str());
+    std::vector<uint8_t> data = ulid::MarshalBinary(ulid);
+    std::string str(reinterpret_cast<char*>(data.data()), data.size());
+    return str;
 }
