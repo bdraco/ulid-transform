@@ -1,3 +1,4 @@
+#include <string>
 
 #ifdef ULIDUINT128
 #include "ulid_uint128.hh"
