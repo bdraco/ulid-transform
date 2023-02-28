@@ -10,14 +10,9 @@ try:
 except ImportError:
     from distutils.core import Extension
 
-convert_module = Extension(
-    "ulid_transform._convert",
-    [join("src", "ulid_transform", "_convert.pyx")],
-    language="c++",
-)
-generate_module = Extension(
-    "ulid_transform._generate",
-    [join("src", "ulid_transform", "_generate.pyx")],
+ulid_module = Extension(
+    "ulid_transform._ulid",
+    [join("src", "ulid_transform", "_ulid.pyx")],
     language="c++",
 )
 
@@ -40,8 +35,7 @@ def build(setup_kwargs: Any) -> None:
             dict(
                 ext_modules=cythonize(
                     [
-                        convert_module,
-                        generate_module,
+                        ulid_module,
                     ],
                     compiler_directives={"language_level": "3"},  # Python 3
                 ),
