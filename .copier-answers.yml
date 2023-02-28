@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier
+_commit: 5559e3e
+_src_path: gh:browniebroke/pypackage-template
+add_me_as_contributor: false
+copyright_year: '2022'
+documentation: false
+email: nick@koston.org
+full_name: J. Nick Koston
+github_username: bdraco
+initial_commit: true
+open_source_license: MIT
+package_name: ulid_transform
+project_name: Fast ULID transformations
+project_short_description: Create and transform ULIDs
+project_slug: ulid-transform
+run_poetry_install: true
+setup_github: true
+setup_pre_commit: true
+
