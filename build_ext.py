@@ -23,7 +23,8 @@ def build(setup_kwargs: Any) -> None:
             dict(
                 ext_modules=cythonize(
                     [
-                        "src/ulid_tansform/convert.py",
+                        "src/ulid_transform/convert.py",
+                        "src/ulid_transform/generate.py",
                     ],
                     compiler_directives={"language_level": "3"},  # Python 3
                 ),
