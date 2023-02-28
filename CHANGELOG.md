@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2023-02-28)
+### Feature
+* Add examples ([#5](https://github.com/bdraco/ulid-transform/issues/5)) ([`be30a13`](https://github.com/bdraco/ulid-transform/commit/be30a133b3a03b1e6704954cf0c59f4fb64d4b7c))
+
 ## v0.2.1 (2023-02-28)
 ### Fix
 * Drop fast-ulid for cython ([#4](https://github.com/bdraco/ulid-transform/issues/4)) ([`8d72d6b`](https://github.com/bdraco/ulid-transform/commit/8d72d6b58d306d722f096a5b3697d4365eae397d))
