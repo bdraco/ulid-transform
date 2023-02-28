@@ -1,3 +1,10 @@
 # Changelog
 
 <!--next-version-placeholder-->
+
+## v0.1.0 (2023-02-28)
+### Feature
+* Init repo ([#1](https://github.com/bdraco/ulid-transform/issues/1)) ([`0ef9511`](https://github.com/bdraco/ulid-transform/commit/0ef95113cd638617de16be44909b228d0df5f092))
+
+### Fix
+* Remove html file ([#2](https://github.com/bdraco/ulid-transform/issues/2)) ([`c1a5cf4`](https://github.com/bdraco/ulid-transform/commit/c1a5cf4a4a8c5a2c8ba1663b9132d612fe47570d))
