@@ -17,12 +17,17 @@ packages = [
     { include = "ulid_transform", from = "src" },
 ]
 
+[tool.poetry.build]
+generate-setup-file = true
+script = "build_ext.py"
+
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/bdraco/ulid-transform/issues"
 "Changelog" = "https://github.com/bdraco/ulid-transform/blob/main/CHANGELOG.md"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.10"
+fast-ulid = "^0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0"
@@ -72,6 +77,7 @@ exclude = [
 module = "tests.*"
 allow_untyped_defs = true
 
+
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ['setuptools>=65.4.1', 'wheel', 'Cython', "poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
