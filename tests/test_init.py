@@ -1,6 +1,6 @@
 import pytest
 
-from ulid_transform import decode_ulid, ulid
+from ulid_transform import ulid, ulid_to_bytes
 
 
 def test_ulid():
@@ -8,13 +8,13 @@ def test_ulid():
     assert len(ulid_str) == 26
 
 
-def test_decode_ulid():
+def test_ulid_to_bytes():
     assert (
-        decode_ulid("01GTCKZT7K26YEVVW6AMQ3J0VT")
+        ulid_to_bytes("01GTCKZT7K26YEVVW6AMQ3J0VT")
         == b"\x01\x86\x99?\xe8\xf3\x11\xbc\xed\xef\x86U.9\x03z"
     )
 
 
-def test_decode_ulid_invalid_length():
+def test_ulid_to_bytes_invalid_length():
     with pytest.raises(ValueError):
-        assert decode_ulid("aa")
+        assert ulid_to_bytes("aa")

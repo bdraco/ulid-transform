@@ -275,7 +275,7 @@ except ImportError:
     from ._cython_compat import FAKE_CYTHON as cython
 
 
-def decode_ulid(value: _str) -> bytes:
+def ulid_to_bytes(value: _str) -> bytes:
     """Decode a ulid to bytes."""
     if len(value) != 26:
         raise ValueError("ULID must be 26 characters")
