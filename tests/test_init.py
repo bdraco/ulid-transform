@@ -42,6 +42,13 @@ def test_timestamp():
     assert _ulid_timestamp(ulid) == int(now * 1000)
 
 
+def test_timestamp_fixed():
+    now = 1677627631.2127638
+    ulid = ulid_at_time(now)
+    # ULIDs store time to 3 decimal places compared to python timestamps
+    assert _ulid_timestamp(ulid) == int(now * 1000)
+
+
 def _ulid_timestamp(ulid: str) -> int:
     encoded = ulid[:10].encode("ascii")
     # This unpacks the time from the ulid
