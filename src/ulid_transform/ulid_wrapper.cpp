@@ -18,7 +18,8 @@ std::string _cpp_ulid_at_time(double epoch_time) {
 }
 
 std::string _cpp_ulid_to_bytes(std::string ulid_string) {
-  ulid::ULID ulid = ulid::Unmarshal(ulid_string.c_str());
+  ulid::ULID ulid;
+  ulid::UnmarshalFrom(ulid_string.c_str(), ulid);
   std::vector<uint8_t> data = ulid::MarshalBinary(ulid);
   std::string str(reinterpret_cast<char *>(data.data()), data.size());
   return str;
