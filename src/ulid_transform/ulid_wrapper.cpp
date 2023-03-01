@@ -13,7 +13,7 @@ std::string _cpp_ulid() {
 std::string _cpp_ulid_at_time(double timestamp) {
   const auto encoded_time = chrono::system_clock::to_time_t(
       chrono::system_clock::time_point(chrono::duration_cast<chrono::seconds>(
-          chrono::duration<double>(timestamp * 1000))));
+          chrono::duration<double>(timestamp))));
   ulid::ULID ulid;
   ulid::EncodeTime(encoded_time, ulid);
   ulid::EncodeEntropyRand(ulid);
