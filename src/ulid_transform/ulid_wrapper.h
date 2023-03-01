@@ -6,5 +6,6 @@
 std::string _cpp_ulid();
 std::string _cpp_ulid_at_time(double timestamp);
 std::string _cpp_ulid_to_bytes(std::string ulid_string);
+std::string _cpp_bytes_to_ulid(std::string ulid_string);
 
 #endif
