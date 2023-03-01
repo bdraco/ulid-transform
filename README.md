@@ -29,6 +29,8 @@
 
 Create and transform ULIDs
 
+This library will use the CPP implementation from https://github.com/suyash/ulid if cython is available, and will fallback to pure python if it is not.
+
 ## Example
 
 ```python

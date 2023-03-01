@@ -4,7 +4,7 @@ from time import time
 
 # From https://github.com/ahawker/ulid/blob/06289583e9de4286b4d80b4ad000d137816502ca/ulid/base32.py#L102
 #: Array that maps encoded string char byte values to enable O(1) lookups.
-DECODE = array.array(
+_DECODE = array.array(
     "B",
     (
         0xFF,
@@ -347,7 +347,7 @@ def ulid_to_bytes(value: str) -> bytes:
     if len(value) != 26:
         raise ValueError("ULID must be 26 characters")
     encoded = value.encode("ascii")
-    decoding = DECODE
+    decoding = _DECODE
     return bytes(
         (
             ((decoding[encoded[0]] << 5) | decoding[encoded[1]]) & 0xFF,

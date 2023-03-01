@@ -35,6 +35,11 @@ def test_ulid_to_bytes_2():
     )
 
 
+def test_timestamp_string():
+    ulid = ulid_at_time(1677627631.2127638)
+    assert ulid[:10] == "01GTD6C9KC"
+
+
 def test_timestamp():
     now = time.time()
     ulid = ulid_at_time(now)
