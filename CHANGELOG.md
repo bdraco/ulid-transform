@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.0 (2023-03-01)
+### Feature
+* Add bytes_to_ulid ([#8](https://github.com/bdraco/ulid-transform/issues/8)) ([`c9a57ef`](https://github.com/bdraco/ulid-transform/commit/c9a57ef2d68886d37e03dd9d884a51c35a5c1e12))
+
 ## v0.3.1 (2023-03-01)
 ### Fix
 * Encode timestamps correctly in cpp implementation ([#7](https://github.com/bdraco/ulid-transform/issues/7)) ([`c7fedc3`](https://github.com/bdraco/ulid-transform/commit/c7fedc350bf9848dc38af362e33819fac4036a9e))
