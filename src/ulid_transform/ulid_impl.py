@@ -302,10 +302,13 @@ def ulid_at_time(timestamp: float) -> str:
     import ulid
     ulid.parse(ulid_util.ulid())
     """
-    ulid_bytes = int((timestamp) * 1000).to_bytes(6, byteorder="big") + int(
-        getrandbits(80)
-    ).to_bytes(10, byteorder="big")
+    return _encode(
+        int((timestamp) * 1000).to_bytes(6, byteorder="big")
+        + int(getrandbits(80)).to_bytes(10, byteorder="big")
+    )
 
+
+def _encode(ulid_bytes: bytes) -> str:
     # This is base32 crockford encoding with the loop unrolled for performance
     #
     # This code is adapted from:
@@ -398,6 +401,13 @@ def ulid_to_bytes(value: str) -> bytes:
             ((decoding[encoded[24]] << 5) | (decoding[encoded[25]])) & 0xFF,
         )
     )
+
+
+def bytes_to_ulid(value: bytes) -> str:
+    """Encode bytes to a ulid."""
+    if len(value) != 16:
+        raise ValueError("ULID must be 16 bytes")
+    return _encode(value)
 
 
 try:

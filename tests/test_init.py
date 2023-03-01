@@ -3,7 +3,13 @@ import time
 
 import pytest
 
-from ulid_transform import ulid_at_time, ulid_hex, ulid_now, ulid_to_bytes
+from ulid_transform import (
+    bytes_to_ulid,
+    ulid_at_time,
+    ulid_hex,
+    ulid_now,
+    ulid_to_bytes,
+)
 
 
 def test_ulid_now():
@@ -20,6 +26,13 @@ def test_ulid_to_bytes():
     assert (
         ulid_to_bytes("01GTCKZT7K26YEVVW6AMQ3J0VT")
         == b"\x01\x86\x99?\xe8\xf3\x11\xbc\xed\xef\x86U.9\x03z"
+    )
+
+
+def test_bytes_to_ulid():
+    assert (
+        bytes_to_ulid(b"\x01\x86\x99?\xe8\xf3\x11\xbc\xed\xef\x86U.9\x03z")
+        == "01GTCKZT7K26YEVVW6AMQ3J0VT"
     )
 
 
