@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.1 (2023-03-01)
+### Fix
+* Encode timestamps correctly in cpp implementation ([#7](https://github.com/bdraco/ulid-transform/issues/7)) ([`c7fedc3`](https://github.com/bdraco/ulid-transform/commit/c7fedc350bf9848dc38af362e33819fac4036a9e))
+
 ## v0.3.0 (2023-02-28)
 ### Feature
 * Add examples ([#5](https://github.com/bdraco/ulid-transform/issues/5)) ([`be30a13`](https://github.com/bdraco/ulid-transform/commit/be30a133b3a03b1e6704954cf0c59f4fb64d4b7c))
