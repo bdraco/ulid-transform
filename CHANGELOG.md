@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.1 (2023-03-13)
+### Fix
+* Random as 0 on 32 bit arch ([#9](https://github.com/bdraco/ulid-transform/issues/9)) ([`c9fa4f3`](https://github.com/bdraco/ulid-transform/commit/c9fa4f32c12eabea67da14d0c32d9a5ac65f2842))
+
 ## v0.4.0 (2023-03-01)
 ### Feature
 * Add bytes_to_ulid ([#8](https://github.com/bdraco/ulid-transform/issues/8)) ([`c9a57ef`](https://github.com/bdraco/ulid-transform/commit/c9a57ef2d68886d37e03dd9d884a51c35a5c1e12))
