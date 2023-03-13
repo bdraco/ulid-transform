@@ -1,12 +1,14 @@
 #include "ulid_wrapper.h"
 #include "ulid.hh"
-
+#include<iostream>
 using namespace std;
 
 std::string _cpp_ulid() {
   ulid::ULID ulid;
   ulid::EncodeNowRand(ulid);
-  return ulid::Marshal(ulid);
+  std::string mystr = ulid::Marshal(ulid);
+  std::cerr << mystr;
+  return mystr;
 }
 
 std::string _cpp_ulid_at_time(double epoch_time) {
