@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.2 (2023-03-13)
+### Fix
+* Ulid_now on 32bit ([#10](https://github.com/bdraco/ulid-transform/issues/10)) ([`c8f7dd7`](https://github.com/bdraco/ulid-transform/commit/c8f7dd790f987ca4310dd155a78fff263adf0cfc))
+
 ## v0.4.1 (2023-03-13)
 ### Fix
 * Random as 0 on 32 bit arch ([#9](https://github.com/bdraco/ulid-transform/issues/9)) ([`c9fa4f3`](https://github.com/bdraco/ulid-transform/commit/c9fa4f32c12eabea67da14d0c32d9a5ac65f2842))

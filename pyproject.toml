@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ulid-transform"
-version = "0.4.1"
+version = "0.4.2"
 description = "Create and transform ULIDs"
 authors = ["J. Nick Koston <nick@koston.org>"]
 license = "MIT"
