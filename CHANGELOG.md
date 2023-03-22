@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.5.1 (2023-03-22)
+### Fix
+* Specify python version to build wheels ([#12](https://github.com/bdraco/ulid-transform/issues/12)) ([`9263de0`](https://github.com/bdraco/ulid-transform/commit/9263de0f70a4198cfcb2ba4a8f44440a7841e407))
+
 ## v0.5.0 (2023-03-22)
 ### Feature
 * Wheels for macOS and Windows ([#11](https://github.com/bdraco/ulid-transform/issues/11)) ([`086852e`](https://github.com/bdraco/ulid-transform/commit/086852e57250994d0f3c9faedabf2df6aeb9e789))
