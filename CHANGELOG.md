@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.5.0 (2023-03-22)
+### Feature
+* Wheels for macOS and Windows ([#11](https://github.com/bdraco/ulid-transform/issues/11)) ([`086852e`](https://github.com/bdraco/ulid-transform/commit/086852e57250994d0f3c9faedabf2df6aeb9e789))
+
 ## v0.4.2 (2023-03-13)
 ### Fix
 * Ulid_now on 32bit ([#10](https://github.com/bdraco/ulid-transform/issues/10)) ([`c8f7dd7`](https://github.com/bdraco/ulid-transform/commit/c8f7dd790f987ca4310dd155a78fff263adf0cfc))
