@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.6.0 (2023-04-06)
+### Feature
+* Reflect the invalid value when raising ValueError ([#13](https://github.com/bdraco/ulid-transform/issues/13)) ([`6a022fb`](https://github.com/bdraco/ulid-transform/commit/6a022fb4084e3a007c469e6e2993ccb3621c4271))
+
 ## v0.5.1 (2023-03-22)
 ### Fix
 * Specify python version to build wheels ([#12](https://github.com/bdraco/ulid-transform/issues/12)) ([`9263de0`](https://github.com/bdraco/ulid-transform/commit/9263de0f70a4198cfcb2ba4a8f44440a7841e407))
