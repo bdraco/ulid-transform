@@ -19,5 +19,5 @@ def _ulid_at_time(_time: float) -> str:
 
 def _ulid_to_bytes(ulid_str: str) -> bytes:
     if len(ulid_str) != 26:
-        raise ValueError("ULID must be 26 characters")
+        raise ValueError(f"ULID must be 26 character string: {ulid_str}")
     return _cpp_ulid_to_bytes(ulid_str.encode("ascii"))

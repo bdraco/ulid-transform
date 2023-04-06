@@ -348,7 +348,7 @@ def _encode(ulid_bytes: bytes) -> str:
 def ulid_to_bytes(value: str) -> bytes:
     """Decode a ulid to bytes."""
     if len(value) != 26:
-        raise ValueError(f"ULID string must be 26 characters: {value}")
+        raise ValueError(f"ULID must be 26 character string: {value}")
     encoded = value.encode("ascii")
     decoding = _DECODE
     return bytes(
