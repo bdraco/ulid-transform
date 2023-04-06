@@ -37,8 +37,13 @@ def test_bytes_to_ulid():
 
 
 def test_ulid_to_bytes_invalid_length():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="aa"):
         assert ulid_to_bytes("aa")
+
+
+def test_bytes_to_ulid_invalid_length():
+    with pytest.raises(ValueError, match="aa"):
+        assert bytes_to_ulid(b"aa")
 
 
 def test_ulid_to_bytes_2():
