@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.6.1 (2023-04-09)
+### Fix
+* Apply 32bit time fix ([#15](https://github.com/bdraco/ulid-transform/issues/15)) ([`26347f0`](https://github.com/bdraco/ulid-transform/commit/26347f0067be94ba36607ea9b875b5d1354e6002))
+
 ## v0.6.0 (2023-04-06)
 ### Feature
 * Reflect the invalid value when raising ValueError ([#13](https://github.com/bdraco/ulid-transform/issues/13)) ([`6a022fb`](https://github.com/bdraco/ulid-transform/commit/6a022fb4084e3a007c469e6e2993ccb3621c4271))
