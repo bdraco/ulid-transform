@@ -257,12 +257,7 @@ struct ULID {
 inline void EncodeTime(std::chrono::time_point<std::chrono::system_clock> time_point, ULID& ulid) {
 	auto time_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(time_point);
 	int64_t timestamp = time_ms.time_since_epoch().count();
-	ulid.data[0] = static_cast<uint8_t>(timestamp >> 40);
-	ulid.data[1] = static_cast<uint8_t>(timestamp >> 32);
-	ulid.data[2] = static_cast<uint8_t>(timestamp >> 24);
-	ulid.data[3] = static_cast<uint8_t>(timestamp >> 16);
-	ulid.data[4] = static_cast<uint8_t>(timestamp >> 8);
-	ulid.data[5] = static_cast<uint8_t>(timestamp);
+    EncodeTimestamp(timestamp, ulid);
 }
 
 
