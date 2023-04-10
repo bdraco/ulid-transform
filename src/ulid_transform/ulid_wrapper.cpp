@@ -12,8 +12,7 @@ std::string _cpp_ulid() {
 
 std::string _cpp_ulid_at_time(double epoch_time) {
   ulid::ULID ulid;
-  int64_t epoch_time_int = static_cast<int64_t>(epoch_time*1000);
-  ulid::EncodeTimestamp(epoch_time_int, ulid);
+  ulid::EncodeTimestamp(static_cast<int64_t>(epoch_time*1000), ulid);
   ulid::EncodeEntropyRand(ulid);
   return ulid::Marshal(ulid);
 }
