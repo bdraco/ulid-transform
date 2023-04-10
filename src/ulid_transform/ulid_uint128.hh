@@ -27,30 +27,7 @@ typedef __uint128_t ULID;
 inline void EncodeTime(std::chrono::time_point<std::chrono::system_clock> time_point, ULID& ulid) {
 	auto time_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(time_point);
 	int64_t timestamp = time_ms.time_since_epoch().count();
-	ULID t = static_cast<uint8_t>(timestamp >> 40);
-
-	t <<= 8;
-	t |= static_cast<uint8_t>(timestamp >> 32);
-
-	t <<= 8;
-	t |= static_cast<uint8_t>(timestamp >> 24);
-
-	t <<= 8;
-	t |= static_cast<uint8_t>(timestamp >> 16);
-
-	t <<= 8;
-	t |= static_cast<uint8_t>(timestamp >> 8);
-
-	t <<= 8;
-	t |= static_cast<uint8_t>(timestamp);
-
-	t <<= 80;
-
-	ULID mask = 1;
-	mask <<= 80;
-	mask--;
-
-	ulid = t | (ulid & mask);
+    EncodeTimestamp(timestamp, ulid);
 }
 
 
