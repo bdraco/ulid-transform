@@ -22,16 +22,6 @@ namespace ulid {
 typedef __uint128_t ULID;
 
 /**
- * EncodeTime will encode the time point to the passed ulid
- * */
-inline void EncodeTime(std::chrono::time_point<std::chrono::system_clock> time_point, ULID& ulid) {
-	auto time_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(time_point);
-	int64_t timestamp = time_ms.time_since_epoch().count();
-    EncodeTimestamp(timestamp, ulid);
-}
-
-
-/**
  * EncodeTimestamp will encode the int64_t timestamp to the passed ulid
  * */
 inline void EncodeTimestamp(int64_t timestamp, ULID& ulid) {
@@ -59,6 +49,15 @@ inline void EncodeTimestamp(int64_t timestamp, ULID& ulid) {
 	mask--;
 
 	ulid = t | (ulid & mask);
+}
+
+/**
+ * EncodeTime will encode the time point to the passed ulid
+ * */
+inline void EncodeTime(std::chrono::time_point<std::chrono::system_clock> time_point, ULID& ulid) {
+	auto time_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(time_point);
+	int64_t timestamp = time_ms.time_since_epoch().count();
+    EncodeTimestamp(timestamp, ulid);
 }
 
 /**
