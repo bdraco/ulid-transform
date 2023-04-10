@@ -53,6 +53,37 @@ inline void EncodeTime(std::chrono::time_point<std::chrono::system_clock> time_p
 	ulid = t | (ulid & mask);
 }
 
+
+/**
+ * EncodeTimestamp will encode the int64_t timestamp to the passed ulid
+ * */
+inline void EncodeTimestamp(int64_t timestamp, ULID& ulid) {
+	ULID t = static_cast<uint8_t>(timestamp >> 40);
+
+	t <<= 8;
+	t |= static_cast<uint8_t>(timestamp >> 32);
+
+	t <<= 8;
+	t |= static_cast<uint8_t>(timestamp >> 24);
+
+	t <<= 8;
+	t |= static_cast<uint8_t>(timestamp >> 16);
+
+	t <<= 8;
+	t |= static_cast<uint8_t>(timestamp >> 8);
+
+	t <<= 8;
+	t |= static_cast<uint8_t>(timestamp);
+
+	t <<= 80;
+
+	ULID mask = 1;
+	mask <<= 80;
+	mask--;
+
+	ulid = t | (ulid & mask);
+}
+
 /**
  * EncodeTimeNow will encode a ULID using the time obtained using std::time(nullptr)
  * */
