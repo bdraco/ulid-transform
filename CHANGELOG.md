@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.6.3 (2023-04-10)
+### Fix
+* Additional 32bit time fixes ([#17](https://github.com/bdraco/ulid-transform/issues/17)) ([`2f5f1be`](https://github.com/bdraco/ulid-transform/commit/2f5f1be3fe63bb63b57e158c32ab5e9d7ab16b9c))
+
 ## v0.6.2 (2023-04-09)
 ### Fix
 * Apply 32bit cast for for random data ([#16](https://github.com/bdraco/ulid-transform/issues/16)) ([`1e1d62a`](https://github.com/bdraco/ulid-transform/commit/1e1d62aa961178d6416e4ac82cc0634b06260ad4))
