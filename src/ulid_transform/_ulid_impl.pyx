@@ -9,10 +9,11 @@ import cython
 cdef extern from "ulid_wrapper.h":
     string _cpp_ulid_at_time(double timestamp)
     string _cpp_ulid_to_bytes(string ulid)
+    string _cpp_ulid()
 
 
 def _ulid_now() -> str:
-    return _cpp_ulid_at_time(time()).decode("ascii")
+    return _cpp_ulid().decode("ascii")
 
 def _ulid_at_time(_time: float) -> str:
     return _cpp_ulid_at_time(_time).decode("ascii")
