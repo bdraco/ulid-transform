@@ -252,24 +252,32 @@ struct ULID {
 };
 
 /**
- * EncodeTime will encode the first 6 bytes of a uint8_t array to the passed
- * timestamp
+ * EncodeTimestamp will encode the int64_t timestamp to the passed ulid
  * */
-inline void EncodeTime(time_t timestamp, ULID& ulid) {
-	const int _sz = static_cast<int>(sizeof(time_t));
-	// 6th bit of timestamp has index 5
-	const int last_index = std::min( 5, _sz - 1 );
-	for ( int index = 0; index <= last_index; ++index ) {
-		// NOTE: `index<<3` means `index*8`: {40, 32, 24, 16, 8, 0}
-		ulid.data[last_index-index]=(timestamp >>(index<<3));
-	}
+inline void EncodeTimestamp(int64_t timestamp, ULID& ulid) {
+	ulid.data[0] = static_cast<uint8_t>(timestamp >> 40);
+	ulid.data[1] = static_cast<uint8_t>(timestamp >> 32);
+	ulid.data[2] = static_cast<uint8_t>(timestamp >> 24);
+	ulid.data[3] = static_cast<uint8_t>(timestamp >> 16);
+	ulid.data[4] = static_cast<uint8_t>(timestamp >> 8);
+	ulid.data[5] = static_cast<uint8_t>(timestamp);
+}
+
+/**
+ * EncodeTime will encode the time point to the passed ulid
+ * */
+inline void EncodeTime(std::chrono::time_point<std::chrono::system_clock> time_point, ULID& ulid) {
+	auto time_ms = std::chrono::time_point_cast<std::chrono::milliseconds>(time_point);
+	int64_t timestamp = time_ms.time_since_epoch().count();
+    EncodeTimestamp(timestamp, ulid);
 }
 
 /**
  * EncodeTimeNow will encode a ULID using the time obtained using std::time(nullptr)
  * */
 inline void EncodeTimeNow(ULID& ulid) {
-	EncodeTime(std::time(nullptr), ulid);
+	auto time_now = std::chrono::system_clock::from_time_t(time(nullptr));
+	EncodeTime(time_now, ulid);
 }
 
 /**
@@ -277,9 +285,7 @@ inline void EncodeTimeNow(ULID& ulid) {
  * std::chrono::system_clock::now() by taking the timestamp in milliseconds.
  * */
 inline void EncodeTimeSystemClockNow(ULID& ulid) {
-	auto now = std::chrono::system_clock::now();
-	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
-	EncodeTime(ms.count(), ulid);
+	EncodeTime(std::chrono::system_clock::now(), ulid);
 }
 
 /**
@@ -340,7 +346,7 @@ inline void EncodeEntropyMt19937(std::mt19937& generator, ULID& ulid) {
 /**
  * Encode will create an encoded ULID with a timestamp and a generator.
  * */
-inline void Encode(time_t timestamp, const std::function<uint8_t()>& rng, ULID& ulid) {
+inline void Encode(std::chrono::time_point<std::chrono::system_clock> timestamp, const std::function<uint8_t()>& rng, ULID& ulid) {
 	EncodeTime(timestamp, ulid);
 	EncodeEntropy(rng, ulid);
 }
@@ -356,11 +362,12 @@ inline void EncodeNowRand(ULID& ulid) {
 /**
  * Create will create a ULID with a timestamp and a generator.
  * */
-inline ULID Create(time_t timestamp, const std::function<uint8_t()>& rng) {
+inline ULID Create(std::chrono::time_point<std::chrono::system_clock> timestamp, const std::function<uint8_t()>& rng) {
 	ULID ulid;
 	Encode(timestamp, rng, ulid);
 	return ulid;
 }
+
 
 /**
  * CreateNowRand:EncodeNowRand = Create:Encode.
@@ -681,8 +688,8 @@ inline int CompareULIDs(const ULID& ulid1, const ULID& ulid2) {
 /**
  * Time will extract the timestamp used to generate a ULID
  * */
-inline time_t Time(const ULID& ulid) {
-	time_t ans = 0;
+inline std::chrono::time_point<std::chrono::system_clock> Time(const ULID& ulid) {
+	int64_t ans = 0;
 
 	ans |= ulid.data[0];
 
@@ -701,7 +708,7 @@ inline time_t Time(const ULID& ulid) {
 	ans <<= 8;
 	ans |= ulid.data[5];
 
-	return ans;
+	return std::chrono::time_point<std::chrono::system_clock>(std::chrono::milliseconds{ans});
 }
 
 };  // namespace ulid

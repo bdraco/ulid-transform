@@ -17,6 +17,8 @@ ulid_module = Extension(
         join("src", "ulid_transform", "ulid_wrapper.cpp"),
     ],
     language="c++",
+    extra_compile_args=["-std=c++11"],
+    extra_link_args=["-std=c++11"],
 )
 
 
