@@ -5,14 +5,17 @@ using namespace std;
 
 std::string _cpp_ulid() {
   ulid::ULID ulid;
-  ulid::EncodeNowRand(ulid);
+  ulid::EncodeTimeSystemClockNow(ulid);
+  ulid::EncodeEntropyRand(ulid);
   return ulid::Marshal(ulid);
 }
 
 std::string _cpp_ulid_at_time(double epoch_time) {
-  time_t encoded_time = static_cast<time_t>(epoch_time*1000);
   ulid::ULID ulid;
-  ulid::EncodeTime(encoded_time, ulid);
+  std::time_t t = epoch_time;
+  int microseconds = (epoch_time - t) * 1000000;
+  std::chrono::system_clock::time_point time = std::chrono::system_clock::from_time_t(t) + std::chrono::microseconds(microseconds);
+  ulid::EncodeTime(time, ulid);
   ulid::EncodeEntropyRand(ulid);
   return ulid::Marshal(ulid);
 }
