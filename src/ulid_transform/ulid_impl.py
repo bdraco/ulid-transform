@@ -412,6 +412,9 @@ def bytes_to_ulid(value: bytes) -> str:
 
 try:
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+        _bytes_to_ulid as bytes_to_ulid,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
         _ulid_at_time as ulid_at_time,
     )
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
