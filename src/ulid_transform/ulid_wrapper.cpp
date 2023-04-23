@@ -24,3 +24,9 @@ std::string _cpp_ulid_to_bytes(std::string ulid_string) {
   std::string str(reinterpret_cast<char *>(data.data()), data.size());
   return str;
 }
+
+std::string _cpp_bytes_to_ulid(std::string bytes_string) {
+  std::vector<uint8_t> data(bytes_string.begin(), bytes_string.end());
+  ulid::ULID ulid = ulid::UnmarshalBinary(data);
+  return ulid::Marshal(ulid);
+}
