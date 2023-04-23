@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.7.0 (2023-04-23)
+### Feature
+* Add a bytes_to_ulid cpp version ([#18](https://github.com/bdraco/ulid-transform/issues/18)) ([`fa1c62c`](https://github.com/bdraco/ulid-transform/commit/fa1c62c97be608390a5e42de5712382ee8ec86e9))
+
 ## v0.6.3 (2023-04-10)
 ### Fix
 * Additional 32bit time fixes ([#17](https://github.com/bdraco/ulid-transform/issues/17)) ([`2f5f1be`](https://github.com/bdraco/ulid-transform/commit/2f5f1be3fe63bb63b57e158c32ab5e9d7ab16b9c))
