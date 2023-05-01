@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.7.2 (2023-05-01)
+### Fix
+* Ensure windows wheel work with older versions ([#20](https://github.com/bdraco/ulid-transform/issues/20)) ([`8a440e3`](https://github.com/bdraco/ulid-transform/commit/8a440e3f818b3af8a694544755d55f1c221ada3a))
+
 ## v0.7.1 (2023-05-01)
 ### Fix
 * Missing decode for _bytes_to_ulid ([#19](https://github.com/bdraco/ulid-transform/issues/19)) ([`ddf6433`](https://github.com/bdraco/ulid-transform/commit/ddf6433554ca3d4fef6500b84e43adf475a794bb))
