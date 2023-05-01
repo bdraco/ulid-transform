@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.7.1 (2023-05-01)
+### Fix
+* Missing decode for _bytes_to_ulid ([#19](https://github.com/bdraco/ulid-transform/issues/19)) ([`ddf6433`](https://github.com/bdraco/ulid-transform/commit/ddf6433554ca3d4fef6500b84e43adf475a794bb))
+
 ## v0.7.0 (2023-04-23)
 ### Feature
 * Add a bytes_to_ulid cpp version ([#18](https://github.com/bdraco/ulid-transform/issues/18)) ([`fa1c62c`](https://github.com/bdraco/ulid-transform/commit/fa1c62c97be608390a5e42de5712382ee8ec86e9))
