@@ -8,7 +8,7 @@ import cython
 
 cdef extern from "ulid_wrapper.h":
     string _cpp_ulid_at_time(double timestamp)
-    string _cpp_ulid_to_bytes(string ulid)
+    string _cpp_ulid_to_bytes(const char * ulid_string)
     string _cpp_ulid()
     string _cpp_bytes_to_ulid(string ulid_bytes)
 
@@ -27,4 +27,4 @@ def _ulid_to_bytes(ulid_str: str) -> bytes:
 def _bytes_to_ulid(ulid_bytes: bytes) -> str:
     if len(ulid_bytes) != 16:
         raise ValueError(f"ULID bytes be 16 bytes: {ulid_bytes}")
-    return _cpp_bytes_to_ulid(ulid_bytes)
+    return _cpp_bytes_to_ulid(ulid_bytes).decode("ascii")

@@ -411,17 +411,17 @@ def bytes_to_ulid(value: bytes) -> str:
 
 
 try:
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _bytes_to_ulid as bytes_to_ulid,
     )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_at_time as ulid_at_time,
     )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_now as ulid_now,
     )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_to_bytes as ulid_to_bytes,
     )
-except ImportError:
-    pass
+except ImportError:  # pragma: no cover
+    pass  # pragma: no cover
