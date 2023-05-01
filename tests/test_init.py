@@ -29,6 +29,16 @@ def test_ulid_to_bytes():
     )
 
 
+def test_ulid_to_bytes_overflow():
+    with pytest.raises(ValueError):
+        ulid_to_bytes("01GTCKZT7K26YEVVW6AMQ3J0VT0000")
+
+
+def test_ulid_to_bytes_under_low():
+    with pytest.raises(ValueError):
+        ulid_to_bytes("01")
+
+
 def test_bytes_to_ulid():
     assert (
         bytes_to_ulid(b"\x01\x86\x99?\xe8\xf3\x11\xbc\xed\xef\x86U.9\x03z")
