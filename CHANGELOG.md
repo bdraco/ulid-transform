@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.8.0 (2023-07-24)
+
+### Feature
+
+* Initial cpython 3.12 support ([#21](https://github.com/bdraco/ulid-transform/issues/21)) ([`7f7e8b9`](https://github.com/bdraco/ulid-transform/commit/7f7e8b90d3a7a529a58d00e66be8494a18476842))
+
 ## v0.7.2 (2023-05-01)
 ### Fix
 * Ensure windows wheel work with older versions ([#20](https://github.com/bdraco/ulid-transform/issues/20)) ([`8a440e3`](https://github.com/bdraco/ulid-transform/commit/8a440e3f818b3af8a694544755d55f1c221ada3a))
