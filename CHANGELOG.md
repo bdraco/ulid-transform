@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.8.1 (2023-08-27)
+
+### Fix
+
+* Rebuild wheels with cython 3.0.2 ([#22](https://github.com/bdraco/ulid-transform/issues/22)) ([`8d78432`](https://github.com/bdraco/ulid-transform/commit/8d78432cf81b1a2e5230dd434b50c21365686548))
+
 ## v0.8.0 (2023-07-24)
 
 ### Feature
