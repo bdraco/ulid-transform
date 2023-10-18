@@ -2,6 +2,16 @@
 
 <!--next-version-placeholder-->
 
+## v0.9.0 (2023-10-18)
+
+### Feature
+
+* Build wheel with latest cpython release ([#25](https://github.com/bdraco/ulid-transform/issues/25)) ([`8bc67fe`](https://github.com/bdraco/ulid-transform/commit/8bc67fe8f2c56a9aacdede63331afe6c54a1528d))
+
+### Fix
+
+* Reduce size of wheels by excluding generated .cpp files ([#24](https://github.com/bdraco/ulid-transform/issues/24)) ([`29e0ff4`](https://github.com/bdraco/ulid-transform/commit/29e0ff474f729adea32c10a3d0adfc7801b5e892))
+
 ## v0.8.1 (2023-08-27)
 
 ### Fix
