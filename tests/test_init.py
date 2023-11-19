@@ -15,6 +15,8 @@ from ulid_transform import (
 def test_ulid_now():
     ulid_str = ulid_now()
     assert len(ulid_str) == 26
+    timestamp = _ulid_timestamp(ulid_str)
+    assert timestamp == pytest.approx(int(time.time() * 1000), 1)
 
 
 def test_ulid_hex():
