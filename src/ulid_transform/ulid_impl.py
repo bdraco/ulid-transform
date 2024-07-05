@@ -410,9 +410,32 @@ def bytes_to_ulid(value: bytes) -> str:
     return _encode(value)
 
 
+def ulid_to_bytes_or_none(ulid: str | None) -> bytes | None:
+    """Convert an ulid to bytes."""
+    if ulid is None:
+        return None
+    try:
+        return ulid_to_bytes(ulid)
+    except ValueError:
+        return None
+
+
+def bytes_to_ulid_or_none(_bytes: bytes | None) -> str | None:
+    """Convert bytes to a ulid."""
+    if _bytes is None:
+        return None
+    try:
+        return bytes_to_ulid(_bytes)
+    except ValueError:
+        return None
+
+
 try:
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _bytes_to_ulid as bytes_to_ulid,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
+        _bytes_to_ulid_or_none as bytes_to_ulid_or_none,
     )
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_at_time as ulid_at_time,
@@ -422,6 +445,9 @@ try:
     )
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_to_bytes as ulid_to_bytes,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
+        _ulid_to_bytes_or_none as ulid_to_bytes_or_none,
     )
 except ImportError:  # pragma: no cover
     pass  # pragma: no cover
