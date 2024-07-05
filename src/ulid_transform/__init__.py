@@ -1,4 +1,4 @@
-__version__ = "0.9.0"
+__version__ = "0.10.0"
 
 from .ulid_impl import (
     bytes_to_ulid,

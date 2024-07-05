@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.10.0 (2024-07-05)
+
+### Feature
+
+* Add new fast or_none functions ([#30](https://github.com/bdraco/ulid-transform/issues/30)) ([`4d1d1ee`](https://github.com/bdraco/ulid-transform/commit/4d1d1ee398f791bd35a64941d3eb838cf1ef705e))
+
 ## v0.9.0 (2023-10-18)
 
 ### Feature
