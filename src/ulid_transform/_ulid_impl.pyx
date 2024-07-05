@@ -36,6 +36,6 @@ def _ulid_to_bytes_or_none(ulid_str: Optional[str]) -> Optional[bytes]:
     return _cpp_ulid_to_bytes(ulid_str.encode("ascii"))
 
 def _bytes_to_ulid_or_none(ulid_bytes: Optional[bytes]) -> Optional[str]:
-    if len(ulid_bytes) != 16:
+    if ulid_bytes is None or len(ulid_bytes) != 16:
         return None
     return _cpp_bytes_to_ulid(ulid_bytes).decode("ascii")
