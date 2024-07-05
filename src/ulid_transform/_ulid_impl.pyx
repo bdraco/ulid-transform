@@ -2,6 +2,7 @@
 from libcpp.string cimport string
 
 from time import time
+from typing import Optional
 
 import cython
 
@@ -29,12 +30,12 @@ def _bytes_to_ulid(ulid_bytes: bytes) -> str:
         raise ValueError(f"ULID bytes be 16 bytes: {ulid_bytes}")
     return _cpp_bytes_to_ulid(ulid_bytes).decode("ascii")
 
-def _ulid_to_bytes_or_none(ulid_str: str) -> bytes:
+def _ulid_to_bytes_or_none(ulid_str: Optional[str]) -> Optional[bytes]:
     if ulid_str is None or len(ulid_str) != 26:
         return None
     return _cpp_ulid_to_bytes(ulid_str.encode("ascii"))
 
-def _bytes_to_ulid_or_none(ulid_bytes: bytes) -> str:
+def _bytes_to_ulid_or_none(ulid_bytes: Optional[bytes]) -> Optional[str]:
     if len(ulid_bytes) != 16:
         return None
     return _cpp_bytes_to_ulid(ulid_bytes).decode("ascii")
