@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.10.1 (2024-07-05)
+
+### Fix
+
+* Wheel builds ([#32](https://github.com/bdraco/ulid-transform/issues/32)) ([`87b511e`](https://github.com/bdraco/ulid-transform/commit/87b511e1b00b8fa07ef7a18a5b5012e8df943441))
+
 ## v0.10.0 (2024-07-05)
 
 ### Feature
