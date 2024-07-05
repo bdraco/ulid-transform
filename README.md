@@ -45,6 +45,12 @@ This library will use the CPP implementation from https://github.com/suyash/ulid
 b'\x00\x00c\xfe\x82\xbc\x00!\xc0t\x877\x0b\xad\xad\xee'
 >> ulid_transform.bytes_to_ulid(b"\x01\x86\x99?\xe8\xf3\x11\xbc\xed\xef\x86U.9\x03z")
 '01GTCKZT7K26YEVVW6AMQ3J0VT'
+>>> ulid_transform.ulid_to_bytes_or_none('0001HZX0NW00GW0X476W5TVBFE')
+b'\x00\x00c\xfe\x82\xbc\x00!\xc0t\x877\x0b\xad\xad\xee'
+>>> ulid_transform.ulid_to_bytes_or_none(None)
+>>> ulid_transform.bytes_to_ulid_or_none(b'\x00\x00c\xfe\x82\xbc\x00!\xc0t\x877\x0b\xad\xad\xee')
+'0001HZX0NW00GW0X476W5TVBFE'
+>>> ulid_transform.bytes_to_ulid_or_none(None)
 ```
 
 ## Installation
