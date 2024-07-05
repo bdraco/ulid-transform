@@ -6,13 +6,11 @@ import pytest
 from ulid_transform import (
     bytes_to_ulid,
     bytes_to_ulid_or_none,
-    bytes_to_uuid_hex_or_none,
     ulid_at_time,
     ulid_hex,
     ulid_now,
     ulid_to_bytes,
     ulid_to_bytes_or_none,
-    uuid_hex_to_bytes_or_none,
 )
 
 
@@ -404,25 +402,3 @@ def test_bytes_to_ulid_or_none() -> None:
     )
     assert bytes_to_ulid_or_none(b"invalid") is None
     assert bytes_to_ulid_or_none(None) is None
-
-
-def test_uuid_hex_to_bytes_or_none() -> None:
-    """Test uuid_hex_to_bytes_or_none."""
-
-    assert (
-        uuid_hex_to_bytes_or_none("0123456789abcdef0123456789abcdef")
-        == b"\x01#Eg\x89\xab\xcd\xef\x01#Eg\x89\xab\xcd\xef"
-    )
-    assert uuid_hex_to_bytes_or_none("invalid") is None
-    assert uuid_hex_to_bytes_or_none(None) is None
-
-
-def test_bytes_to_uuid_hex_or_none() -> None:
-    """Test bytes_to_uuid_hex_or_none."""
-
-    assert (
-        bytes_to_uuid_hex_or_none(b"\x01#Eg\x89\xab\xcd\xef\x01#Eg\x89\xab\xcd\xef")
-        == "0123456789abcdef0123456789abcdef"
-    )
-    assert bytes_to_uuid_hex_or_none(b"invalid") is None
-    assert bytes_to_uuid_hex_or_none(None) is None

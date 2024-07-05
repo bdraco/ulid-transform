@@ -1,8 +1,6 @@
 import array
-from functools import lru_cache
 from random import getrandbits
 from time import time
-from uuid import UUID
 
 # From https://github.com/ahawker/ulid/blob/06289583e9de4286b4d80b4ad000d137816502ca/ulid/base32.py#L102
 #: Array that maps encoded string char byte values to enable O(1) lookups.
@@ -428,28 +426,6 @@ def bytes_to_ulid_or_none(_bytes: bytes | None) -> str | None:
         return None
     try:
         return bytes_to_ulid(_bytes)
-    except ValueError:
-        return None
-
-
-@lru_cache(maxsize=16)
-def uuid_hex_to_bytes_or_none(uuid_hex: str | None) -> bytes | None:
-    """Convert a uuid hex to bytes."""
-    if uuid_hex is None:
-        return None
-    try:
-        return UUID(hex=uuid_hex).bytes
-    except ValueError:
-        return None
-
-
-@lru_cache(maxsize=16)
-def bytes_to_uuid_hex_or_none(_bytes: bytes | None) -> str | None:
-    """Convert bytes to a uuid hex."""
-    if _bytes is None:
-        return None
-    try:
-        return UUID(bytes=_bytes).hex
     except ValueError:
         return None
 
