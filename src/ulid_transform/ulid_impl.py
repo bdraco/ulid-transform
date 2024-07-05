@@ -1,6 +1,8 @@
 import array
+from functools import lru_cache
 from random import getrandbits
 from time import time
+from uuid import UUID
 
 # From https://github.com/ahawker/ulid/blob/06289583e9de4286b4d80b4ad000d137816502ca/ulid/base32.py#L102
 #: Array that maps encoded string char byte values to enable O(1) lookups.
@@ -410,9 +412,54 @@ def bytes_to_ulid(value: bytes) -> str:
     return _encode(value)
 
 
+def ulid_to_bytes_or_none(ulid: str | None) -> bytes | None:
+    """Convert an ulid to bytes."""
+    if ulid is None:
+        return None
+    try:
+        return ulid_to_bytes(ulid)
+    except ValueError:
+        return None
+
+
+def bytes_to_ulid_or_none(_bytes: bytes | None) -> str | None:
+    """Convert bytes to a ulid."""
+    if _bytes is None:
+        return None
+    try:
+        return bytes_to_ulid(_bytes)
+    except ValueError:
+        return None
+
+
+@lru_cache(maxsize=16)
+def uuid_hex_to_bytes_or_none(uuid_hex: str | None) -> bytes | None:
+    """Convert a uuid hex to bytes."""
+    if uuid_hex is None:
+        return None
+    try:
+        return UUID(hex=uuid_hex).bytes
+    except ValueError:
+        return None
+
+
+@lru_cache(maxsize=16)
+def bytes_to_uuid_hex_or_none(_bytes: bytes | None) -> str | None:
+    """Convert bytes to a uuid hex."""
+    if _bytes is None:
+        return None
+    try:
+        return UUID(bytes=_bytes).hex
+    except ValueError:
+        return None
+
+
 try:
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _bytes_to_ulid as bytes_to_ulid,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
+        _bytes_to_ulid_or_none as bytes_to_ulid_or_none,
     )
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_at_time as ulid_at_time,
@@ -422,6 +469,9 @@ try:
     )
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_to_bytes as ulid_to_bytes,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
+        _ulid_to_bytes_or_none as ulid_to_bytes_or_none,
     )
 except ImportError:  # pragma: no cover
     pass  # pragma: no cover
