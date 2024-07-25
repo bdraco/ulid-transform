@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.11.0 (2024-07-25)
+
+### Feature
+
+* Add fast ULID bytes functions ([#37](https://github.com/bdraco/ulid-transform/issues/37)) ([`57b58ab`](https://github.com/bdraco/ulid-transform/commit/57b58ab269dcb97dbc905925861c3a25daf7e114))
+
 ## v0.10.2 (2024-07-25)
 
 ### Fix
