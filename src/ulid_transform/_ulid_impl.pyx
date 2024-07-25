@@ -27,7 +27,7 @@ def _ulid_to_bytes(ulid_str: str) -> bytes:
 
 def _bytes_to_ulid(ulid_bytes: bytes) -> str:
     if len(ulid_bytes) != 16:
-        raise ValueError(f"ULID bytes be 16 bytes: {ulid_bytes}")
+        raise ValueError(f"ULID bytes must be 16 bytes: {ulid_bytes!r}")
     return _cpp_bytes_to_ulid(ulid_bytes).decode("ascii")
 
 def _ulid_to_bytes_or_none(ulid_str: Optional[str]) -> Optional[bytes]:
