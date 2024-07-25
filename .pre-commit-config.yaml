@@ -66,4 +66,4 @@ repos:
     rev: 1.7.9
     hooks:
       - id: bandit
-        args: [-x, tests]
+        args: [-x, "tests,bench"]
