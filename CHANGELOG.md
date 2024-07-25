@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.10.2 (2024-07-25)
+
+### Fix
+
+* Fix error message in Cython `bytes_to_ulid` ([#36](https://github.com/bdraco/ulid-transform/issues/36)) ([`d8b5462`](https://github.com/bdraco/ulid-transform/commit/d8b54622d1445916f08b61ff3aad34e61bfbb986))
+
 ## v0.10.1 (2024-07-05)
 
 ### Fix
