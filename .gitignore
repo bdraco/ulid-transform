@@ -138,3 +138,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Generated Cython file
+src/ulid_transform/*.cpp

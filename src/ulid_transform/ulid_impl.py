@@ -280,6 +280,21 @@ def ulid_hex() -> str:
     return f"{int(time()*1000):012x}{getrandbits(80):020x}"
 
 
+def ulid_at_time_bytes(timestamp: float) -> bytes:
+    """Generate an ULID as 16 bytes that will work for a UUID.
+
+    uuid.UUID(bytes=ulid_bytes)
+    """
+    return int(timestamp * 1000).to_bytes(6, byteorder="big") + int(
+        getrandbits(80)
+    ).to_bytes(10, byteorder="big")
+
+
+def ulid_now_bytes() -> bytes:
+    """Generate an ULID as 16 bytes that will work for a UUID."""
+    return ulid_at_time_bytes(time())
+
+
 def ulid_now() -> str:
     """Generate a ULID."""
     return ulid_at_time(time())
@@ -302,10 +317,7 @@ def ulid_at_time(timestamp: float) -> str:
     import ulid
     ulid.parse(ulid_util.ulid())
     """
-    return _encode(
-        int((timestamp) * 1000).to_bytes(6, byteorder="big")
-        + int(getrandbits(80)).to_bytes(10, byteorder="big")
-    )
+    return _encode(ulid_at_time_bytes(timestamp))
 
 
 def _encode(ulid_bytes: bytes) -> str:
@@ -441,7 +453,13 @@ try:
         _ulid_at_time as ulid_at_time,
     )
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
+        _ulid_at_time_bytes as ulid_at_time_bytes,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_now as ulid_now,
+    )
+    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
+        _ulid_now_bytes as ulid_now_bytes,
     )
     from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
         _ulid_to_bytes as ulid_to_bytes,
