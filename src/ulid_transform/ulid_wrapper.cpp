@@ -10,11 +10,25 @@ std::string _cpp_ulid() {
   return ulid::Marshal(ulid);
 }
 
+std::vector<uint8_t> _cpp_ulid_bytes() {
+  ulid::ULID ulid;
+  ulid::EncodeTimeSystemClockNow(ulid);
+  ulid::EncodeEntropyRand(ulid);
+  return ulid::MarshalBinary(ulid);
+}
+
 std::string _cpp_ulid_at_time(double epoch_time) {
   ulid::ULID ulid;
   ulid::EncodeTimestamp(static_cast<int64_t>(epoch_time*1000), ulid);
   ulid::EncodeEntropyRand(ulid);
   return ulid::Marshal(ulid);
+}
+
+std::vector<uint8_t> _cpp_ulid_at_time_bytes(double epoch_time) {
+  ulid::ULID ulid;
+  ulid::EncodeTimestamp(static_cast<int64_t>(epoch_time*1000), ulid);
+  ulid::EncodeEntropyRand(ulid);
+  return ulid::MarshalBinary(ulid);
 }
 
 std::string _cpp_ulid_to_bytes(const char * ulid_string) {
