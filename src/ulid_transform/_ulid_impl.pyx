@@ -2,8 +2,6 @@
 from libcpp.string cimport string
 from libcpp.vector cimport vector
 
-from typing import Optional
-
 
 cdef extern from "ulid_wrapper.h":
     string _cpp_ulid_at_time(double timestamp)
@@ -79,14 +77,14 @@ def bytes_to_ulid(value: bytes) -> str:
     return _cpp_bytes_to_ulid(value).decode("ascii")
 
 
-def ulid_to_bytes_or_none(ulid: Optional[str]) -> Optional[bytes]:
+def ulid_to_bytes_or_none(ulid: str | None) -> bytes | None:
     """Convert an ulid to bytes."""
     if ulid is None or len(ulid) != 26:
         return None
     return _cpp_ulid_to_bytes(ulid.encode("ascii"))
 
 
-def bytes_to_ulid_or_none(ulid_bytes: Optional[bytes]) -> Optional[str]:
+def bytes_to_ulid_or_none(ulid_bytes: bytes | None) -> str | None:
     """Convert bytes to a ulid."""
     if ulid_bytes is None or len(ulid_bytes) != 16:
         return None
