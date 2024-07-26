@@ -56,6 +56,7 @@ def build(setup_kwargs: Any) -> None:
                         ulid_module,
                     ],
                     compiler_directives={"language_level": "3"},  # Python 3
+                    verbose=True,
                 ),
                 cmdclass=dict(build_ext=BuildExt),
             )
