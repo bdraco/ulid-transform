@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.11.1 (2024-07-26)
+
+### Fix
+
+* Cython build, add a test to verify the Cython module is available ([#41](https://github.com/bdraco/ulid-transform/issues/41)) ([`7187b35`](https://github.com/bdraco/ulid-transform/commit/7187b357b395b9c1716c8beaa5fc4db389fece18))
+
 ## v0.11.0 (2024-07-25)
 
 ### Feature
