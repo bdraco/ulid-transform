@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.12.0 (2024-07-26)
+
+### Feature
+
+* Improve testability, keep implementations in sync ([#40](https://github.com/bdraco/ulid-transform/issues/40)) ([`975079d`](https://github.com/bdraco/ulid-transform/commit/975079d682ffb6039454d3c041867e0d14a9f646))
+
 ## v0.11.1 (2024-07-26)
 
 ### Fix
