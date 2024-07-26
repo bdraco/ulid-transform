@@ -432,40 +432,11 @@ def ulid_to_bytes_or_none(ulid: str | None) -> bytes | None:
         return None
 
 
-def bytes_to_ulid_or_none(_bytes: bytes | None) -> str | None:
+def bytes_to_ulid_or_none(ulid_bytes: bytes | None) -> str | None:
     """Convert bytes to a ulid."""
-    if _bytes is None:
+    if ulid_bytes is None:
         return None
     try:
-        return bytes_to_ulid(_bytes)
+        return bytes_to_ulid(ulid_bytes)
     except ValueError:
         return None
-
-
-try:
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _bytes_to_ulid as bytes_to_ulid,
-    )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _bytes_to_ulid_or_none as bytes_to_ulid_or_none,
-    )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _ulid_at_time as ulid_at_time,
-    )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _ulid_at_time_bytes as ulid_at_time_bytes,
-    )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _ulid_now as ulid_now,
-    )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _ulid_now_bytes as ulid_now_bytes,
-    )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _ulid_to_bytes as ulid_to_bytes,
-    )
-    from ._ulid_impl import (  # type: ignore[no-redef] # noqa: F811 F401 # pragma: no cover
-        _ulid_to_bytes_or_none as ulid_to_bytes_or_none,
-    )
-except ImportError:  # pragma: no cover
-    pass  # pragma: no cover
