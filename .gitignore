@@ -141,3 +141,6 @@ cython_debug/
 
 # Generated Cython file
 src/ulid_transform/*.cpp
+
+# PyCharm files
+.idea/
