@@ -139,8 +139,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Generated Cython file
+# Generated Cython files
 src/ulid_transform/*.cpp
+src/ulid_transform/*.html
 
 # PyCharm files
 .idea/
