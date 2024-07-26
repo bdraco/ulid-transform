@@ -55,13 +55,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - uses: snok/install-poetry@v1.3.3
       - name: Install Dependencies
-        run: |
-          if [ "${{ matrix.extension }}" = "skip_cython" ]; then
-            SKIP_CYTHON=1 poetry install --only=main,dev
-          else
-            poetry install --only=main,dev
-          fi
+        run: poetry install --only=main,dev
         shell: bash
+        env:
+          SKIP_CYTHON: ${{ matrix.extension == 'skip_cython' }}
       - name: Test with Pytest
         run: poetry run pytest -v -Wdefault --cov=ulid_transform --cov-report=term-missing:skip-covered --cov-report=xml tests
         shell: bash

@@ -1,5 +1,6 @@
 """Build optional cython modules."""
 
+import logging
 import os
 from distutils.command.build_ext import build_ext
 from os.path import join
@@ -9,6 +10,16 @@ try:
     from setuptools import Extension
 except ImportError:
     from distutils.core import Extension
+
+
+def getenv_bool(key: str, default: bool = False) -> bool:
+    value = os.environ.get(key, str(default)).lower()
+    if value in ("1", "true", "yes"):
+        return True
+    if value in ("0", "false", "no"):
+        return False
+    raise ValueError(f"Invalid value for boolean envvar {key}: {value}")
+
 
 ulid_module = Extension(
     "ulid_transform._ulid_impl",
@@ -27,11 +38,13 @@ class BuildExt(build_ext):
         try:
             super().build_extensions()
         except Exception:  # nosec
-            pass
+            logging.exception("Failed to build extensions")
+            if getenv_bool("REQUIRE_CYTHON"):
+                raise
 
 
 def build(setup_kwargs: Any) -> None:
-    if os.environ.get("SKIP_CYTHON", False):
+    if getenv_bool("SKIP_CYTHON"):
         return
     try:
         from Cython.Build import cythonize
@@ -51,6 +64,6 @@ def build(setup_kwargs: Any) -> None:
             pkg: ["_ulid_impl.cpp"] for pkg in setup_kwargs["packages"]
         }
     except Exception:
-        if os.environ.get("REQUIRE_CYTHON"):
+        logging.exception("Failed to configure cython")
+        if getenv_bool("REQUIRE_CYTHON"):
             raise
-        pass
