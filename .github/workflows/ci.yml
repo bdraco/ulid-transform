@@ -55,16 +55,21 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - uses: snok/install-poetry@v1.3.3
       - name: Install Dependencies
+        # the separate `pip install` phase is required because Poetry
+        # appears to hide the output of `pip install` commands (and possibly
+        # doesn't pass all environment variables through to the build)
         run: |
-          if [ "${{ matrix.extension }}" = "skip_cython" ]; then
-            SKIP_CYTHON=1 poetry install --only=main,dev
-          else
-            poetry install --only=main,dev
-          fi
+          env CYTHON_FORCE_REGEN=1 pip install --no-cache -v -e .
+          poetry install --only=main,dev
         shell: bash
+        env:
+          REQUIRE_CYTHON: ${{ matrix.extension == 'use_cython' }}
+          SKIP_CYTHON: ${{ matrix.extension == 'skip_cython' }}
       - name: Test with Pytest
         run: poetry run pytest -v -Wdefault --cov=ulid_transform --cov-report=term-missing:skip-covered --cov-report=xml tests
         shell: bash
+        env:
+          REQUIRE_CYTHON: ${{ matrix.extension == 'use_cython' }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
@@ -82,7 +87,7 @@ jobs:
           branch: v3.18
       - name: Set up Python
         run: |
-          apk add gcc musl-dev python3-dev py3-pip poetry
+          apk add gcc g++ musl-dev python3-dev py3-pip poetry
         shell: alpine.sh --root {0}
       - name: Install Dependencies
         run: |
