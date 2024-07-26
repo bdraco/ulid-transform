@@ -11,4 +11,4 @@ def test_require_cython():
         pytest.skip("REQUIRE_CYTHON is not truthy")
     import ulid_transform._ulid_impl as c_impl
 
-    assert repr(c_impl._ulid_now).startswith("<cyfunction")
+    assert repr(c_impl.ulid_now).startswith("<cyfunction")
