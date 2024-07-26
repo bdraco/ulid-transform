@@ -68,6 +68,8 @@ jobs:
       - name: Test with Pytest
         run: poetry run pytest -v -Wdefault --cov=ulid_transform --cov-report=term-missing:skip-covered --cov-report=xml tests
         shell: bash
+        env:
+          REQUIRE_CYTHON: ${{ matrix.extension == 'use_cython' }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
