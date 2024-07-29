@@ -11,6 +11,7 @@ try:
         ulid_now_bytes,
         ulid_to_bytes,
         ulid_to_bytes_or_none,
+        ulid_to_timestamp,
     )
 except ImportError:
     from ._py_ulid_impl import (
@@ -23,6 +24,7 @@ except ImportError:
         ulid_now_bytes,
         ulid_to_bytes,
         ulid_to_bytes_or_none,
+        ulid_to_timestamp,
     )
 
 __all__ = [
@@ -35,4 +37,5 @@ __all__ = [
     "ulid_now_bytes",
     "ulid_to_bytes",
     "ulid_to_bytes_or_none",
+    "ulid_to_timestamp",
 ]

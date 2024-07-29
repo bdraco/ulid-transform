@@ -78,3 +78,17 @@ void _cpp_hexlify_16(const uint8_t b[16], char dst[32]) {
         dst[out_index++] = hexdigits[c & 0x0f];
     }
 }
+
+/**
+* Interpret the first 6 bytes of a binary ULID as a timestamp.
+*/
+uint64_t _cpp_bytes_to_timestamp(const uint8_t b[16]) {
+    uint64_t timestamp = 0;
+    timestamp |= static_cast<uint64_t>(b[0]) << 40;
+    timestamp |= static_cast<uint64_t>(b[1]) << 32;
+    timestamp |= static_cast<uint64_t>(b[2]) << 24;
+    timestamp |= static_cast<uint64_t>(b[3]) << 16;
+    timestamp |= static_cast<uint64_t>(b[4]) << 8;
+    timestamp |= static_cast<uint64_t>(b[5]);
+    return timestamp;
+}

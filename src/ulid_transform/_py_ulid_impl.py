@@ -440,3 +440,15 @@ def bytes_to_ulid_or_none(ulid_bytes: bytes | None) -> str | None:
         return bytes_to_ulid(ulid_bytes)
     except ValueError:
         return None
+
+
+def ulid_to_timestamp(ulid: str | bytes) -> int:
+    """
+    Get the timestamp from a ULID.
+    The returned value is in milliseconds since the UNIX epoch.
+    """
+    if not isinstance(ulid, bytes):
+        ulid_bytes = ulid_to_bytes(ulid)
+    else:
+        ulid_bytes = ulid
+    return int.from_bytes(b"\x00\x00" + ulid_bytes[:6], "big")

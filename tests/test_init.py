@@ -6,14 +6,14 @@ import pytest
 def test_ulid_now(impl):
     ulid_str = impl.ulid_now()
     assert len(ulid_str) == 26
-    timestamp = _ulid_timestamp(ulid_str)
+    timestamp = impl.ulid_to_timestamp(ulid_str)
     assert timestamp == pytest.approx(int(time.time() * 1000), 1)
 
 
 def test_ulid_now_bytes(impl):
     ulid_bytes = impl.ulid_now_bytes()
     assert len(ulid_bytes) == 16
-    timestamp = _ulid_timestamp(ulid_bytes)
+    timestamp = impl.ulid_to_timestamp(ulid_bytes)
     assert timestamp == pytest.approx(int(time.time() * 1000), 1)
 
 
@@ -80,7 +80,7 @@ def test_timestamp(impl, gen):
     now = time.time()
     ulid = gen(now)
     # ULIDs store time to 3 decimal places compared to python timestamps
-    assert _ulid_timestamp(ulid) == int(now * 1000)
+    assert impl.ulid_to_timestamp(ulid) == int(now * 1000)
 
 
 @pytest.mark.parametrize("gen", ["ulid_at_time", "ulid_at_time_bytes"])
@@ -89,17 +89,7 @@ def test_timestamp_fixed(impl, gen):
     now = 1677627631.2127638
     ulid = gen(now)
     # ULIDs store time to 3 decimal places compared to python timestamps
-    assert _ulid_timestamp(ulid) == int(now * 1000)
-
-
-def _ulid_timestamp(ulid: str | bytes) -> int:
-    if not isinstance(ulid, bytes):
-        from ulid_transform import ulid_to_bytes
-
-        ulid_bytes = ulid_to_bytes(ulid)
-    else:
-        ulid_bytes = ulid
-    return int.from_bytes(b"\x00\x00" + ulid_bytes[:6], "big")
+    assert impl.ulid_to_timestamp(ulid) == int(now * 1000)
 
 
 def test_non_uppercase_b32_data(impl):
