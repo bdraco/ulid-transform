@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.13.0 (2024-07-29)
+
+### Feature
+
+* Improve performance of C implementation ([#43](https://github.com/bdraco/ulid-transform/issues/43)) ([`f07d838`](https://github.com/bdraco/ulid-transform/commit/f07d838169743c4e68f344a04b6541a6a8fee239))
+
 ## v0.12.0 (2024-07-26)
 
 ### Feature
