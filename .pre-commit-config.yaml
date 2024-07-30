@@ -62,6 +62,7 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies: []
+        exclude: "src/ulid_transform/__init__.pyi"
   - repo: https://github.com/PyCQA/bandit
     rev: 1.7.9
     hooks:
