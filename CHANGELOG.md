@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.13.1 (2024-07-30)
+
+### Fix
+
+* Add pyi stubs for cython implementation ([#46](https://github.com/bdraco/ulid-transform/issues/46)) ([`dedaa87`](https://github.com/bdraco/ulid-transform/commit/dedaa87d9e5df4ed037bb0a95c971a6e6e376439))
+
 ## v0.13.0 (2024-07-29)
 
 ### Feature
