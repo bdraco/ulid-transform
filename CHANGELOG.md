@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.1 (2024-08-24)
+
+### Fix
+
+* Bump ci to run on python 3.11 ([#52](https://github.com/bdraco/ulid-transform/issues/52)) ([`857e9b8`](https://github.com/bdraco/ulid-transform/commit/857e9b80787e20565d41029dac5f655b1f152672))
+
 ## v1.0.0 (2024-08-24)
 
 ### Feature
