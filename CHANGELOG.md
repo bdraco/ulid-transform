@@ -2,6 +2,16 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.0 (2024-08-24)
+
+### Feature
+
+* Drop python 3.10 support ([#51](https://github.com/bdraco/ulid-transform/issues/51)) ([`b93b779`](https://github.com/bdraco/ulid-transform/commit/b93b77957945c38f334912d64e7c7aa4137863e3))
+
+### Breaking
+
+* drop python 3.10 support ([#51](https://github.com/bdraco/ulid-transform/issues/51)) ([`b93b779`](https://github.com/bdraco/ulid-transform/commit/b93b77957945c38f334912d64e7c7aa4137863e3))
+
 ## v0.14.0 (2024-08-24)
 
 ### Feature
