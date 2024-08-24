@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.14.0 (2024-08-24)
+
+### Feature
+
+* Python 3.13 support ([#50](https://github.com/bdraco/ulid-transform/issues/50)) ([`c50e08a`](https://github.com/bdraco/ulid-transform/commit/c50e08ac1c019ee8a3313780a7fd180f60e4db3f))
+
 ## v0.13.1 (2024-07-30)
 
 ### Fix
