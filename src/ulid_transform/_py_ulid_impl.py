@@ -277,7 +277,7 @@ def ulid_hex() -> str:
 
     ulid.from_uuid(uuid.UUID(ulid_hex))
     """
-    return f"{int(time()*1000):012x}{getrandbits(80):020x}"
+    return f"{int(time() * 1000):012x}{getrandbits(80):020x}"
 
 
 def ulid_at_time_bytes(timestamp: float) -> bytes:

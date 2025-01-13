@@ -16,9 +16,9 @@ def test_impl_exports_required_keys(impl):
     """
     Test all implementations export the public API exposed by ulid_transform.
     """
-    assert set(ulid_transform.__all__) <= set(
-        dir(impl)
-    ), f"{impl} does not match ulid_transform.__all__"
+    assert set(ulid_transform.__all__) <= set(dir(impl)), (
+        f"{impl} does not match ulid_transform.__all__"
+    )
 
 
 def test_impls_in_sync(impl):
