@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.2.0 (2025-01-17)
+
+### Feature
+
+* feat: migrate benchmarks to Python 3.13 (#66) ([`d160dd3`](https://github.com/bdraco/ulid-transform/commit/d160dd333020f22e902dab897b0c7839008fce91))
+
 ## v1.1.0 (2025-01-17)
 
 ### Chore
