@@ -1,5 +1,47 @@
 # CHANGELOG
 
+## v1.1.0 (2025-01-17)
+
+### Chore
+
+* chore(pre-commit.ci): pre-commit autoupdate (#63) ([`86ab538`](https://github.com/bdraco/ulid-transform/commit/86ab538b73bbc534a54c97b36ef31205d2820e5d))
+
+* chore: add codspeed benchmarks (#64) ([`f7c563c`](https://github.com/bdraco/ulid-transform/commit/f7c563c579241adf69d7c676ca0111c35d11e43b))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#62) ([`5fb4ab4`](https://github.com/bdraco/ulid-transform/commit/5fb4ab4d5a61fa2dcb2bdca0a967c47ebd4a4144))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#61) ([`e6ea31c`](https://github.com/bdraco/ulid-transform/commit/e6ea31c16334a1979919a751e4e50daab909d154))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#60)
+
+Co-authored-by: pre-commit-ci[bot] &lt;66853113+pre-commit-ci[bot]@users.noreply.github.com&gt; ([`56db2e2`](https://github.com/bdraco/ulid-transform/commit/56db2e2ddb59cd5037c434185ad76ced699690ca))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#58)
+
+Co-authored-by: pre-commit-ci[bot] &lt;66853113+pre-commit-ci[bot]@users.noreply.github.com&gt; ([`2c2986f`](https://github.com/bdraco/ulid-transform/commit/2c2986f5db4aac03b1416f2cdac50ba0ffdcf418))
+
+* chore: wheel builds should only happen on release (#59) ([`d4cbb09`](https://github.com/bdraco/ulid-transform/commit/d4cbb09b8c547ac9c0b8b9a41971bfadc61e4c7b))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#57)
+
+Co-authored-by: pre-commit-ci[bot] &lt;66853113+pre-commit-ci[bot]@users.noreply.github.com&gt; ([`c30be1a`](https://github.com/bdraco/ulid-transform/commit/c30be1a622544fb8c645b03e848911b09b3d35a3))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#56)
+
+Co-authored-by: pre-commit-ci[bot] &lt;66853113+pre-commit-ci[bot]@users.noreply.github.com&gt; ([`c691406`](https://github.com/bdraco/ulid-transform/commit/c69140612d0840e8b40ed2b6ab55687f7746ffa6))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#55)
+
+Co-authored-by: pre-commit-ci[bot] &lt;66853113+pre-commit-ci[bot]@users.noreply.github.com&gt; ([`6d5155c`](https://github.com/bdraco/ulid-transform/commit/6d5155c56674b245b3205d6e1491d204e2825a6e))
+
+* chore(pre-commit.ci): pre-commit autoupdate (#54)
+
+Co-authored-by: pre-commit-ci[bot] &lt;66853113+pre-commit-ci[bot]@users.noreply.github.com&gt; ([`b81af0e`](https://github.com/bdraco/ulid-transform/commit/b81af0e631c949607a871adf2e1abd196237bf5c))
+
+### Feature
+
+* feat: add aarch64 wheels (#65) ([`950376b`](https://github.com/bdraco/ulid-transform/commit/950376beb4e3d85a9f1e79a6e1408900910099d9))
+
 ## v1.0.2 (2024-08-24)
 
 ### Fix
