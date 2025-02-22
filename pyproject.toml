@@ -5,7 +5,7 @@ description = "Create and transform ULIDs"
 authors = ["J. Nick Koston <nick@koston.org>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/bdraco/ulid-transform"
+repository = "https://github.com/bluetooth-devices/ulid-transform"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -25,8 +25,8 @@ generate-setup-file = true
 script = "build_ext.py"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/bdraco/ulid-transform/issues"
-"Changelog" = "https://github.com/bdraco/ulid-transform/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/bluetooth-devices/ulid-transform/issues"
+"Changelog" = "https://github.com/bluetooth-devices/ulid-transform/blob/main/CHANGELOG.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
