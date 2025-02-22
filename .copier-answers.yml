@@ -6,7 +6,7 @@ copyright_year: '2022'
 documentation: false
 email: nick@koston.org
 full_name: J. Nick Koston
-github_username: bdraco
+github_username: bluetooth-devices
 initial_commit: true
 open_source_license: MIT
 package_name: ulid_transform
